@@ -1,3 +1,5 @@
+GRAPHS --> THIS WOULD BE A USEFUL DATA STRUCTURE FOR TETRIS
+
 trees vs graphs:
   trees have a root, graphs does not
   one single cycle and a tree becomes a graph
@@ -70,3 +72,13 @@ adjacency list easier to work with
 keywords:
 
 connected components
+
+minumum spanning tree
+
+
+TRAVERSAL:
+
+  keep track of where we've been
+
+
+breakpoint()
