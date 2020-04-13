@@ -67,14 +67,34 @@ class Graph:
                     new_path.append(next_vert)
                     qq.enqueue(new_path)
 
-        pass  # TODO
-
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Creat a stack and push the starting_vertex
+        ss = Stack()
+        ss.push(starting_vertex)
+
+        # Create a set of traversed vertices
+        visited = set()
+
+        # While stack is not empty
+        while ss.size() > 0:
+            # pop the vertex off the top of the stack
+            vertex = ss.pop()
+
+            # if the vertex hasn't been visited
+            if vertex not in visited:
+                # DO THE THING!!!! :D
+                print(vertex)
+
+                # add the vertext to visted
+                visited.add(vertex)
+
+                # and push all the neighbors onto the stack
+                for next_vert in self.get_neighbors(vertex):
+                    ss.push(next_vert)
 
     def dft_recursive(self, starting_vertex):
         """
@@ -112,27 +132,32 @@ class Graph:
         pass  # TODO
 
 
-# graph = Graph()
+graph = Graph()
 
-# graph.add_vertex(1)
-# graph.add_vertex(2)
-# graph.add_vertex(3)
-# graph.add_vertex(4)
-# graph.add_vertex(5)
-# graph.add_vertex(6)
-# graph.add_vertex(7)
-# graph.add_edge(5, 3)
-# graph.add_edge(6, 3)
-# graph.add_edge(7, 1)
-# graph.add_edge(4, 7)
-# graph.add_edge(1, 2)
-# graph.add_edge(7, 6)
-# graph.add_edge(2, 4)
-# graph.add_edge(3, 5)
-# graph.add_edge(2, 3)
-# graph.add_edge(4, 6)
+graph.add_vertex(1)
+graph.add_vertex(2)
+graph.add_vertex(3)
+graph.add_vertex(4)
+graph.add_vertex(5)
+graph.add_vertex(6)
+graph.add_vertex(7)
+graph.add_edge(5, 3)
+graph.add_edge(6, 3)
+graph.add_edge(7, 1)
+graph.add_edge(4, 7)
+graph.add_edge(1, 2)
+graph.add_edge(7, 6)
+graph.add_edge(2, 4)
+graph.add_edge(3, 5)
+graph.add_edge(2, 3)
+graph.add_edge(4, 6)
 
 p_print(graph.vertices)
+print("")
+
+print(graph.bft(1))
+print("")
+print(graph.dft(1))
 
 # if __name__ == '__main__':
 #     graph = Graph()  # Instantiate your graph
