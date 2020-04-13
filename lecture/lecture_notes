@@ -1,0 +1,72 @@
+trees vs graphs:
+  trees have a root, graphs does not
+  one single cycle and a tree becomes a graph
+
+git is an acyclic, directional graph
+
+weighted graph, used in google maps
+  weights can represent traffic, time, distance
+  in google maps you can add weight to a particular edge if you want to avoid tolls for example
+  extra weight means it won't be considered an optimal path
+
+
+dense graph --> lots of connections
+
+  [1]---[2]---[3]
+   | \    |     |
+  [4] \ [5]   [6]
+   \   \ |
+    \   \ 
+     \   \
+      \  |
+       \[7]
+
+
+
+adjacency lists (hash-table) --> time-complexity is better O(1) for access
+  store all connections as values
+  keys are the nodes, connections are the pairs
+
+  1: [2, 4, 7]
+  2: [1, 3, 5]
+  3: [2, 6]
+  4: [1, 7]
+
+  why is a set or a tuple a great way to store connections
+    no repeating values
+    lookuptime of O(1)
+
+  an adjacency list is just a list of "things" it's connected to
+
+  space-complexity: O(n)
+
+adjacency matrix --> list of lists, each sublist coresponds to one node. 
+                      it has 0's when that node is not connected, and 1's when it is connected
+
+  0 = not connected
+  1 = connected
+
+    1 2 3 4 5 6 7
+  1 0 1 0 1 0 0 1
+  2 1 0 1 0 0 0 0
+  3
+  4
+  5
+  6
+  7
+
+  space-complexity: O(n^2)
+
+  you'd use adjacency matrix with DENSE Graphs
+
+
+
+adjacency list easier to work with
+
+
+
+
+
+keywords:
+
+connected components
