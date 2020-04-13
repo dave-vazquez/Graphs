@@ -1,0 +1,17 @@
+graphs:
+
+vertices (nodes), weights
+
+graph types:
+
+directed graph, uni-directional movement
+undirected graph, multi-directional movement
+cyclic graph, edges allow you to revisit at least one vert
+acyclic graph - vertices can only be visted once
+
+
+depth first search - explore each branch to deepest level, uses a stack data-structure
+
+breadth-first search - explore levels closest to the root, and finishing at those furhters away, uses a queue data-structure
+                        good for solving a derivate of the "shortest" path problem or other scnearios where you know the      
+                        solution is NOT far from the root.
