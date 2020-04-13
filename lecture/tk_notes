@@ -1,6 +1,6 @@
 graphs:
 
-vertices (nodes), weights
+vertices (nodes), edges, weights
 
 graph types:
 
