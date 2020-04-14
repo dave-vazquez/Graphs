@@ -198,8 +198,6 @@ class Graph:
                     if next_path is not None:
                         return next_path
 
-        return None
-
 
         # 1, 2, 3, 5, 4
 graph = Graph()
