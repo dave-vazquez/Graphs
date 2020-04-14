@@ -96,13 +96,15 @@ class Graph:
                 for next_vert in self.get_neighbors(vertex):
                     ss.push(next_vert)
 
-    def dft_recursive(self, starting_vertex, visited=set()):
+    def dft_recursive(self, starting_vertex, visited=None):
         # I don't really like this solution... seems off
 
+        if not visited:
+            visited = set()
         # print the vertex
         print(starting_vertex)
 
-        # add it to visted
+        # add it to visited
         visited.add(starting_vertex)
 
         # grab the first element of the neighbor set
@@ -111,7 +113,7 @@ class Graph:
         # if the first element hasn't been visited
         if neighbors[-1] not in visited:
             # recurse on that first element
-            self.dft_recursive(neighbors[-1])
+            self.dft_recursive(neighbors[-1], visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -166,34 +168,34 @@ class Graph:
         pass  # TODO
 
 
-# graph = Graph()
+graph = Graph()
 
-# graph.add_vertex(1)
-# graph.add_vertex(2)
-# graph.add_vertex(3)
-# graph.add_vertex(4)
-# graph.add_vertex(5)
-# graph.add_vertex(6)
-# graph.add_vertex(7)
-# graph.add_edge(5, 3)
-# graph.add_edge(6, 3)
-# graph.add_edge(7, 1)
-# graph.add_edge(4, 7)
-# graph.add_edge(1, 2)
-# graph.add_edge(7, 6)
-# graph.add_edge(2, 4)
-# graph.add_edge(3, 5)
-# graph.add_edge(2, 3)
-# graph.add_edge(4, 6)
+graph.add_vertex(1)
+graph.add_vertex(2)
+graph.add_vertex(3)
+graph.add_vertex(4)
+graph.add_vertex(5)
+graph.add_vertex(6)
+graph.add_vertex(7)
+graph.add_edge(5, 3)
+graph.add_edge(6, 3)
+graph.add_edge(7, 1)
+graph.add_edge(4, 7)
+graph.add_edge(1, 2)
+graph.add_edge(7, 6)
+graph.add_edge(2, 4)
+graph.add_edge(3, 5)
+graph.add_edge(2, 3)
+graph.add_edge(4, 6)
 
-# p_print(graph.vertices)
-# print("")
+p_print(graph.vertices)
+print("")
 
 
 # # print(graph.bft(1))
 # # print("")
 # # print(graph.dft(1))
-# print(graph.dft_recursive(1))
+print(graph.dft_recursive(1))
 
 # if __name__ == '__main__':
 #     graph = Graph()  # Instantiate your graph
