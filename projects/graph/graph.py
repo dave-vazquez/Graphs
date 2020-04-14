@@ -107,13 +107,11 @@ class Graph:
         # add it to visited
         visited.add(starting_vertex)
 
-        # grab the first element of the neighbor set
-        neighbors = list(self.get_neighbors(starting_vertex))
-
-        # if the first element hasn't been visited
-        if neighbors[-1] not in visited:
-            # recurse on that first element
-            self.dft_recursive(neighbors[-1], visited)
+        # get all neighbors of starting_vertex
+        for neighbor in self.vertices[starting_vertex]:
+            # recurse if neighbor hasn't already been in visited
+            if neighbor not in visited:
+                self.dft_recursive(neighbor, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
