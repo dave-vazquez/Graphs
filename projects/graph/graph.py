@@ -166,29 +166,42 @@ class Graph:
         This should be done using recursion.
         """
 
-        if path is None:
+        # instantiate on first iteration
+        if path is None and visited is None:
             path = list()
-
-        path.append(starting_vertex)
-
-        if visited is None:
             visited = list()
 
+        # add the current vertex to the path
+        path.append(starting_vertex)
+
+        # return the path if we've reached the destination vertex
         if starting_vertex == destination_vertex:
             return path
 
+        # otherwise if the current vertex has not been visited
         if starting_vertex not in visited:
+            # append it to visited
             visited.append(starting_vertex)
 
-            for next_vert in self.get_neighbors(starting_vertex):
-                if next_vert not in visited:
-                    new_path = list(path)
+            # for every neighbor of the current vertex
+            for neighbor in self.get_neighbors(starting_vertex):
+                # if the neighbor has not been visited
+                if neighbor not in visited:
+                    # make a copy of the path in the event a branch
+                    # traversal leads to a dead-end - (we don't want
+                    # to record the path to a dead-end as a part of
+                    # our resulting path)
+                    path_copy = list(path)
+                    # make a recursive call, passing in the neighbor and the path_copy
+                    # and store it in next_path
                     next_path = self.dfs_recursive(
-                        next_vert, destination_vertex, new_path, visited)
-                    if next_path:
+                        neighbor, destination_vertex, path_copy, visited)
+
+                    if next_path is not None:
                         return next_path
 
-            return None
+        return None
+
 
         # 1, 2, 3, 5, 4
 graph = Graph()
