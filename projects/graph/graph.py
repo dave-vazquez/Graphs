@@ -169,8 +169,7 @@ class Graph:
         if path is None:
             path = list()
 
-        # path.append(starting_vertex)
-        path = path + [starting_vertex]
+        path.append(starting_vertex)
 
         if visited is None:
             visited = list()
