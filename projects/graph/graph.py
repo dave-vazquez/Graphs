@@ -94,8 +94,6 @@ class Graph:
                     ss.push(new_path)
 
     def dft_recursive(self, starting_vertex, visited=None):
-        # I don't really like this solution... seems off
-
         if not visited:
             visited = set()
         # print the vertex
