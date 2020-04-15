@@ -93,7 +93,7 @@ class Graph:
                     new_path.append(next_vert)
                     ss.push(new_path)
 
-    def dft_paths(self, starting_vertex):
+    def dfs_longest_path(self, starting_vertex):
         ss = Stack()
         ss.push([starting_vertex])
         # Create a set of traversed vertices
@@ -122,7 +122,7 @@ class Graph:
                     new_path.append(next_vert)
                     ss.push(new_path)
 
-        return all_paths
+        return all_paths[len(all_paths)]
 
     def dft_recursive(self, starting_vertex, visited=None):
         if not visited:

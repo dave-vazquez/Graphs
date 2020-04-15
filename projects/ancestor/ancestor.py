@@ -16,22 +16,16 @@ def earliest_ancestor(ancestors, starting_node):
     for pair in ancestors:
         graph.add_edge(pair[1], pair[0])
 
-    # get all paths where any duplicate lengthed paths
-    # are reduced to 1 path with the earliest ancestor of
-    # the smallest id
-    all_paths = graph.dft_paths(starting_node)
+    # get the longest path using new method on graph, dfs_longest_path
+    longest_path = graph.dfs_longest_path(starting_node)
 
     # if there is only one path, ex. [6]
     # there must be no ancestors, therefore
     # return -1
-    if len(all_paths) == 1:
+    if len(longest_path) == 1:
         return -1
 
-    # otherwise select the longest_path using the
-    # length of all_paths as the key
-    longest_path = all_paths[len(all_paths)]
-
-    # and return the earliest ancestor of that path
+    # otherwise, return the earliest ancestor of longest path
     return longest_path[-1]
 
 
