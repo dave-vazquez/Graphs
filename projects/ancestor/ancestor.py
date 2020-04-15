@@ -30,18 +30,18 @@ def earliest_ancestor(ancestors, starting_node):
 
 
 def earliest_ancestor_recursive(ancestors, starting_node):
-    # iterate through each ancestor
+    # iterate through each pair
     for pair in ancestors:
         # if the child is the starting_node
         if pair[1] == starting_node:
             # find the child's parent's previous ancestor (or the parent's parent)
             prev_ancestor = earliest_ancestor_recursive(ancestors, pair[0])
-            # if parent has no previous ancestor
+            # if parent has no previous ancestor (or parent)
             if prev_ancestor == -1:
                 # just return the parent
                 return pair[0]
             else:
-                # otherwise return  the previous ancestor of the parent
+                # otherwise return the previous ancestor of the parent (the parent's parent)
                 return prev_ancestor
 
     # returns -1 if starting_node has no previous ancestor
