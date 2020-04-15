@@ -1,0 +1,27 @@
+disjointed graphs 
+
+In a disjoint graph, groups of nodes on a graph that are connected to each other
+
+connected components are the groups of nodes connected to one another
+
+you can find connected components using BFS
+
+  How:
+
+    loop through each node in the graph
+      a. has it been explored?
+        No? - Do BFS
+        on completion, all the nodes you reach are connected!
+
+        Yes? already in a connected components
+
+    
+7
+4
+2
+1
+8
+5
+9
+3
+6 10
