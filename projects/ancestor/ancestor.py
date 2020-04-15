@@ -30,12 +30,13 @@ def earliest_ancestor(ancestors, starting_node):
 
 
 def earliest_ancestor_recursive(ancestors, starting_node):
-    for ancestor in ancestors:
-        if ancestor[1] == starting_node:
-            prev_ancestor = earliest_ancestor(ancestors, ancestor[0])
+    # iterate through each ancesto
+    for pair in ancestors:
+        if pair[1] == starting_node:
+            prev_ancestor = earliest_ancestor(ancestors, pair[0])
 
             if prev_ancestor == -1:
-                return ancestor[0]
+                return pair[0]
             else:
                 return prev_ancestor
 
