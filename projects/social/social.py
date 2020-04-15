@@ -1,9 +1,17 @@
+from util import Queue, Stack
 import random
+import pprint
+import os
+p_print = pprint.PrettyPrinter(width=30).pprint
+os.system("clear")
 
 
 class User:
     def __init__(self, name):
         self.name = name
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class SocialGraph:
@@ -81,13 +89,35 @@ class SocialGraph:
         The key is the friend's ID and the value is the path.
         """
         visited = {}  # Note that this is a dictionary, not a set
-        # !!!! IMPLEMENT ME
+
+        qq = Queue()
+        qq.enqueue([user_id])
+
+        while qq.size() > 0:
+
+            path = qq.dequeue()
+
+            if path[-1] not in visited:
+
+                visited[path[-1]] = path
+
+                if self.friendships[path[-1]]:
+                    next_friendships = self.friendships[path[-1]]
+                else:
+                    next_user = path[-1] + 1
+                    next_friendships = self.friendships[next_user]
+
+                for friend in next_friendships:
+                    new_path = list(path)
+                    new_path.append(friend)
+                    qq.enqueue(new_path)
+
         return visited
 
 
 if __name__ == '__main__':
     sg = SocialGraph()
     sg.populate_graph(10, 2)
-    print(sg.friendships)
+    p_print(sg.friendships)
     connections = sg.get_all_social_paths(1)
-    print(connections)
+    p_print(connections)
