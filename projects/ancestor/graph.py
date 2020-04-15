@@ -104,11 +104,21 @@ class Graph:
             # dequeue/pop the first vertex
             path = ss.pop()
 
-            if all_paths.get(len(path)):
-                if path[-1] < all_paths.get(len(path))[-1]:
-                    all_paths[len(path)] = path
+            # key that represents the length
+            # of the path
+            path_length_key = len(path)
+
+            # if a path of 'path_length_key' already exists in
+            # all_paths
+            if all_paths.get(path_length_key):
+                # and the last ancestor in path is less than
+                # the existing last ancestor
+                if path[-1] < all_paths[path_length_key][-1]:
+                    # overwrite the existing path of the same length
+                    all_paths[path_length_key] = path
             else:
-                all_paths[len(path)] = path
+                # otherwise add the new path
+                all_paths[path_length_key] = path
 
             # if not visited
             if path[-1] not in visited:
