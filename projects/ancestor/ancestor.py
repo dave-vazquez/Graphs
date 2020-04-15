@@ -29,41 +29,14 @@ def earliest_ancestor(ancestors, starting_node):
     return longest_path[-1]
 
 
-test_ancestors = [
-    (1, 3),
-    (2, 3),
-    (3, 6),
-    (5, 6),
-    (5, 7),
-    (4, 5),
-    (4, 8),
-    (8, 9),
-    (11, 8),
-    (10, 1)
-]
+def earliest_ancestor_recursive(ancestors, starting_node):
+    for ancestor in ancestors:
+        if ancestor[1] == starting_node:
+            prev_ancestor = earliest_ancestor(ancestors, ancestor[0])
 
-# result = earliest_ancestor(test_ancestors, 1)
-# result = earliest_ancestor(test_ancestors, 2)
-# result = earliest_ancestor(test_ancestors, 3)
-# result = earliest_ancestor(test_ancestors, 4)
-# result = earliest_ancestor(test_ancestors, 5)
-# result = earliest_ancestor(test_ancestors, 6)
-# result = earliest_ancestor(test_ancestors, 7)
-# result = earliest_ancestor(test_ancestors, 8)
-# result = earliest_ancestor(test_ancestors, 9)
-# result = earliest_ancestor(test_ancestors, 10)
-# result = earliest_ancestor(test_ancestors, 11)
+            if prev_ancestor == -1:
+                return ancestor[0]
+            else:
+                return prev_ancestor
 
-# print(result)
-
-result = earliest_ancestor(test_ancestors, 9)
-print(f"result: {result}")
-
-# def earliest_ancestor(ancestors, starting_node):
-#     print(f"{starting_node}")
-#     for ancestor in ancestors:
-#         if ancestor[1] == starting_node:
-#             if earliest_ancestor(ancestors, ancestor[0]) == -1:
-#                 return ancestor[0]
-
-#     return -1
+    return -1
