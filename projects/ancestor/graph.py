@@ -93,6 +93,47 @@ class Graph:
                     new_path.append(next_vert)
                     ss.push(new_path)
 
+    def dfs_longest_path(self, starting_vertex):
+        ss = Stack()
+        ss.push([starting_vertex])
+        # Create a set of traversed vertices
+        visited = set()
+        all_paths = dict()
+        # While queue is not empty:
+        while ss.size() > 0:
+            # dequeue/pop the first vertex
+            path = ss.pop()
+
+            # key that represents the length
+            # of the path
+            path_length_key = len(path)
+
+            # if a path of 'path_length_key' already exists in
+            # all_paths
+            if all_paths.get(path_length_key):
+                # and the last ancestor in path is less than
+                # the existing last ancestor
+                if path[-1] < all_paths[path_length_key][-1]:
+                    # overwrite the existing path of the same length
+                    all_paths[path_length_key] = path
+            else:
+                # otherwise add the new path
+                all_paths[path_length_key] = path
+
+            # if not visited
+            if path[-1] not in visited:
+                # DO THE THING!!!!!!!
+
+                # mark as visited
+                visited.add(path[-1])
+                # enqueue all neightbors
+                for next_vert in self.get_neighbors(path[-1]):
+                    new_path = list(path)
+                    new_path.append(next_vert)
+                    ss.push(new_path)
+
+        return all_paths[len(all_paths)]
+
     def dft_recursive(self, starting_vertex, visited=None):
         if not visited:
             visited = set()
@@ -213,34 +254,34 @@ class Graph:
                         return next_path
 
         # 1, 2, 3, 5, 4
-graph = Graph()
+# graph = Graph()
 
-graph.add_vertex(1)
-graph.add_vertex(2)
-graph.add_vertex(3)
-graph.add_vertex(4)
-graph.add_vertex(5)
-graph.add_vertex(6)
-graph.add_vertex(7)
-graph.add_edge(5, 3)
-graph.add_edge(6, 3)
-graph.add_edge(7, 1)
-graph.add_edge(4, 7)
-graph.add_edge(1, 2)
-graph.add_edge(7, 6)
-graph.add_edge(2, 4)
-graph.add_edge(3, 5)
-graph.add_edge(2, 3)
-graph.add_edge(4, 6)
+# graph.add_vertex(1)
+# graph.add_vertex(2)
+# graph.add_vertex(3)
+# graph.add_vertex(4)
+# graph.add_vertex(5)
+# graph.add_vertex(6)
+# graph.add_vertex(7)
+# graph.add_edge(5, 3)
+# graph.add_edge(6, 3)
+# graph.add_edge(7, 1)
+# graph.add_edge(4, 7)
+# graph.add_edge(1, 2)
+# graph.add_edge(7, 6)
+# graph.add_edge(2, 4)
+# graph.add_edge(3, 5)
+# graph.add_edge(2, 3)
+# graph.add_edge(4, 6)
 
-p_print(graph.vertices)
-print("")
+# p_print(graph.vertices)
+# print("")
 
 
 # # print(graph.bft(1))
 # # print("")
 # # print(graph.dft(1))
-print(graph.dft_recursive(1))
+# print(graph.dft_recursive(1))
 
 # if __name__ == '__main__':
 #     graph = Graph()  # Instantiate your graph
